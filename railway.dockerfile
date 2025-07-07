@@ -24,12 +24,12 @@ RUN addgroup -g 1001 -S nodejs && \
 RUN chown -R nestjs:nodejs /app
 USER nestjs
 
-# Expose port 3001 for backend
-EXPOSE 3001
+# Expose port 8080 for backend
+EXPOSE 8080
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
-  CMD curl -f http://localhost:3001/ || exit 1
+  CMD curl -f http://localhost:8080/ || exit 1
 
 # Start command
 CMD ["dumb-init", "node", "dist/main.js"]
