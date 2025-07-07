@@ -6,11 +6,14 @@ WORKDIR /app
 # Install system dependencies
 RUN apk add --no-cache curl dumb-init
 
-# Copy all backend files at once
-COPY backend_comment ./
+# Copy package files first for better caching
+COPY backend_comment/package*.json ./
 
 # Install dependencies
 RUN npm ci
+
+# Copy all backend files
+COPY backend_comment ./
 
 # Generate Prisma client and build
 RUN npx prisma generate
