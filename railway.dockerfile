@@ -1,20 +1,16 @@
 # Railway backend Dockerfile
-FROM node:24-alpine
+FROM node:18-alpine
 
 WORKDIR /app
 
 # Install system dependencies
 RUN apk add --no-cache curl dumb-init
 
-# Copy backend files
-COPY backend_comment/package*.json ./
-COPY backend_comment/prisma ./prisma/
+# Copy all backend files at once
+COPY backend_comment ./
 
 # Install dependencies
 RUN npm ci
-
-# Copy all backend source
-COPY backend_comment ./
 
 # Generate Prisma client and build
 RUN npx prisma generate
