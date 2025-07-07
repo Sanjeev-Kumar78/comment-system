@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "Full-stack comment system with React and NestJS",
   "scripts": {
-    "start": "cd backend_comment && npm run start:prod",
-    "start:prod": "cd backend_comment && npm run start:prod",
+    "start": "node dist/main.js",
+    "start:prod": "node dist/main.js",
     "build": "cd backend_comment && npm run build",
     "deploy": "npm run build && npm run start:prod"
   },
-  "keywords": ["comments", "nestjs", "react", "typescript"],
-  "author": "Your Name",
+  "keywords": [
+    "comments",
+    "nestjs",
+    "react",
+    "typescript"
+  ],
+  "author": "",
   "license": "MIT"
 }

@@ -1,6 +1,6 @@
 [build]
 builder = "DOCKERFILE"
-dockerfilePath = "Dockerfile"
+dockerfilePath = "railway.dockerfile"
 
 [deploy]
 startCommand = "dumb-init node dist/main.js"
@@ -11,4 +11,3 @@ restartPolicyMaxRetries = 10
 
 [variables]
 NODE_ENV = "production"
-PORT = "3001"
