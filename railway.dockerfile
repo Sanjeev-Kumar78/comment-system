@@ -6,18 +6,19 @@ WORKDIR /app
 # Install system dependencies
 RUN apk add --no-cache curl dumb-init
 
-# Copy package files first for better caching
-COPY backend_comment/package*.json ./
+# Copy all backend files
+COPY backend_comment ./
 
 # Install dependencies
 RUN npm ci
 
-# Copy all backend files
-COPY backend_comment ./
-
 # Generate Prisma client and build
 RUN npx prisma generate
 RUN npm run build
+
+# Create migration script
+RUN echo '#!/bin/sh\nnpx prisma migrate deploy\nexec "$@"' > /app/migrate-and-start.sh
+RUN chmod +x /app/migrate-and-start.sh
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs && \
@@ -34,5 +35,5 @@ EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
   CMD curl -f http://localhost:8080/ || exit 1
 
-# Start command
-CMD ["dumb-init", "node", "dist/main.js"]
+# Start command - run migrations first, then start the app
+CMD ["/app/migrate-and-start.sh", "dumb-init", "node", "dist/main.js"]
