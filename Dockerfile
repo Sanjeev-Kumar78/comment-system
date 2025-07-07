@@ -1,20 +1,16 @@
-# Railway backend Dockerfile
-FROM node:24-alpine
+# Simple single-stage build for Railway
+FROM node:18-alpine
 
 WORKDIR /app
 
 # Install system dependencies
-RUN apk add --no-cache curl dumb-init
+RUN apk add --no-cache dumb-init curl
 
-# Copy backend files
-COPY backend_comment/package*.json ./
-COPY backend_comment/prisma ./prisma/
+# Copy all backend files
+COPY backend_comment ./
 
 # Install dependencies
 RUN npm ci
-
-# Copy all backend source
-COPY backend_comment ./
 
 # Generate Prisma client and build
 RUN npx prisma generate
@@ -28,7 +24,7 @@ RUN addgroup -g 1001 -S nodejs && \
 RUN chown -R nestjs:nodejs /app
 USER nestjs
 
-# Expose port 3001 for backend
+# Expose port
 EXPOSE 3001
 
 # Health check

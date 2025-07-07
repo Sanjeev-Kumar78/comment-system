@@ -10,8 +10,8 @@
     "build:all": "npm run build && npm run build:frontend",
     "deploy": "npm run build && npm run start:prod",
     "deploy:railway": "railway up",
-    "deploy:railway:backend": "railway up --service backend --dockerfile railway.dockerfile",
-    "deploy:railway:frontend": "railway up --service frontend --dockerfile frontend.railway.dockerfile"
+    "deploy:railway:backend": "railway up --service backend",
+    "deploy:railway:frontend": "railway up --service frontend"
   },
   "keywords": [
     "comments",
