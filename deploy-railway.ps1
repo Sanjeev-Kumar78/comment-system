@@ -25,11 +25,11 @@ try {
 
 # Deploy Backend
 Write-Host "📦 Deploying Backend Service..." -ForegroundColor Blue
-railway up --service backend --dockerfile railway.dockerfile
+railway up --service comment-system
 
 # Deploy Frontend  
 Write-Host "🎨 Deploying Frontend Service..." -ForegroundColor Blue
-railway up --service frontend --dockerfile frontend.railway.dockerfile
+railway up --service frontend
 
 Write-Host "🎉 Deployment completed!" -ForegroundColor Green
 Write-Host "🔗 Check your Railway dashboard for deployment status"

@@ -11,4 +11,6 @@ restartPolicyMaxRetries = 10
 [variables]
 NODE_ENV = "production"
 PORT = "8080"
-BACKEND_URL = "https://comment-system-production.up.railway.app"
+VITE_API_URL = "https://comment-system-backend-production.up.railway.app"
+VITE_APP_NAME = "Comment System"
+VITE_ENVIRONMENT = "production"

@@ -1,6 +1,6 @@
 [build]
 builder = "DOCKERFILE"
-dockerfilePath = "frontend.railway.dockerfile"
+dockerfilePath = "railway.dockerfile"
 
 [deploy]
 healthcheckPath = "/"
@@ -11,6 +11,4 @@ restartPolicyMaxRetries = 10
 [variables]
 NODE_ENV = "production"
 PORT = "8080"
-VITE_API_URL = "https://comment-system-production.up.railway.app"
-VITE_APP_NAME = "Comment System"
-VITE_ENVIRONMENT = "production"
+BACKEND_URL = "https://comment-system-production.up.railway.app"

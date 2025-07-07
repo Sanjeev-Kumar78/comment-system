@@ -11,5 +11,5 @@ restartPolicyMaxRetries = 10
 [variables]
 NODE_ENV = "production"
 PORT = "8080"
-CORS_ORIGIN = "https://frontend-production-fedd.up.railway.app"
 JWT_SECRET = "your-super-secure-jwt-secret-key-at-least-32-characters-long-for-production"
+CORS_ORIGIN = "https://frontend-production-97d2.up.railway.app"
