@@ -1,6 +1,6 @@
 [build]
 builder = "DOCKERFILE"
-dockerfilePath = "frontend.railway.dockerfile"
+dockerfilePath = "railway.dockerfile"
 
 [deploy]
 healthcheckPath = "/"
@@ -11,6 +11,5 @@ restartPolicyMaxRetries = 10
 [variables]
 NODE_ENV = "production"
 PORT = "8080"
-VITE_API_URL = "https://comment-system-production.up.railway.app"
-VITE_APP_NAME = "Comment System"
-VITE_ENVIRONMENT = "production"
+CORS_ORIGIN = "https://frontend-production-fedd.up.railway.app"
+JWT_SECRET = "your-super-secure-jwt-secret-key-at-least-32-characters-long-for-production"
