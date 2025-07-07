@@ -16,10 +16,6 @@ RUN npm ci
 RUN npx prisma generate
 RUN npm run build
 
-# Create migration script
-RUN echo '#!/bin/sh\nnpx prisma migrate deploy\nexec "$@"' > /app/migrate-and-start.sh
-RUN chmod +x /app/migrate-and-start.sh
-
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nestjs -u 1001 -G nodejs
@@ -36,4 +32,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
   CMD curl -f http://localhost:8080/ || exit 1
 
 # Start command - run migrations first, then start the app
-CMD ["/app/migrate-and-start.sh", "dumb-init", "node", "dist/main.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && dumb-init node dist/main.js"]
