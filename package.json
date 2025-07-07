@@ -6,7 +6,12 @@
     "start": "node dist/main.js",
     "start:prod": "node dist/main.js",
     "build": "cd backend_comment && npm run build",
-    "deploy": "npm run build && npm run start:prod"
+    "build:frontend": "cd frontend_comment && npm run build",
+    "build:all": "npm run build && npm run build:frontend",
+    "deploy": "npm run build && npm run start:prod",
+    "deploy:railway": "railway up",
+    "deploy:railway:backend": "railway up --service backend --dockerfile railway.dockerfile",
+    "deploy:railway:frontend": "railway up --service frontend --dockerfile frontend.railway.dockerfile"
   },
   "keywords": [
     "comments",

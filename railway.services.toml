@@ -1,0 +1,16 @@
+# Railway Services Configuration
+# This file helps Railway understand your monorepo structure
+
+# Backend Service (API)
+[backend]
+build.dockerfile = "railway.dockerfile"
+build.root = "."
+deploy.healthcheckPath = "/"
+deploy.startCommand = "dumb-init node dist/main.js"
+
+# Frontend Service (Web)
+[frontend]
+build.dockerfile = "frontend.railway.dockerfile"
+build.root = "."
+deploy.healthcheckPath = "/"
+deploy.startCommand = "nginx -g 'daemon off;'"

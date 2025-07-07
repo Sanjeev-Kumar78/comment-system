@@ -1,5 +1,5 @@
-# Railway deployment Dockerfile
-FROM node:24-alpine
+# Railway backend Dockerfile
+FROM node:18-alpine
 
 WORKDIR /app
 
@@ -28,7 +28,7 @@ RUN addgroup -g 1001 -S nodejs && \
 RUN chown -R nestjs:nodejs /app
 USER nestjs
 
-# Expose Railway's PORT
+# Expose Railway's PORT (Railway sets this automatically)
 EXPOSE $PORT
 
 # Health check
