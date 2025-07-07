@@ -9,6 +9,10 @@ COPY frontend_comment/package*.json ./
 # Install dependencies
 RUN npm ci
 
+# ENV setup
+ENV NODE_ENV=production
+ENV VITE_API_URL=https://comment-system-production.up.railway.app
+
 # Copy source code
 COPY frontend_comment ./
 
@@ -34,7 +38,7 @@ RUN echo 'server { \
         try_files $uri $uri/ /index.html; \
     } \
     location /api { \
-        proxy_pass $BACKEND_URL; \
+        proxy_pass https://comment-system-production.up.railway.app; \
         proxy_set_header Host $host; \
         proxy_set_header X-Real-IP $remote_addr; \
     } \

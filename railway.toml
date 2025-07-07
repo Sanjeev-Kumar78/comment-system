@@ -1,9 +1,8 @@
 [build]
 builder = "DOCKERFILE"
-dockerfilePath = "railway.dockerfile"
+dockerfilePath = "frontend.railway.dockerfile"
 
 [deploy]
-startCommand = "dumb-init node dist/main.js"
 healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
@@ -11,4 +10,5 @@ restartPolicyMaxRetries = 10
 
 [variables]
 NODE_ENV = "production"
-PORT = "3001"
+PORT = "8080"
+BACKEND_URL = "https://comment-system-production.up.railway.app"
